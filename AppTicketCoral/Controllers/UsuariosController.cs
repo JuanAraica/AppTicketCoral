@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using AppTicketCoral.Models;
@@ -13,14 +14,42 @@ namespace AppTicketCoral.Controllers
     public class UsuariosController : Controller
     {
         private TicketCoralEntities db = new TicketCoralEntities();
+        HistoriesController carturer = new HistoriesController();
 
-        // GET: Usuarios
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login([Bind(Include = "UserID,Pass")] Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                Usuario user = db.Usuarios.Find(usuario.UserID);
+                if (user.Pass == usuario.Pass)
+                {
+                    carturer.RegistrarEvento(usuario.NombreUsuario+" ha iniciado sesion"  );
+                    return RedirectToAction("Index", "Coraltickets");
+                }
+
+
+            }
+
+            return View(usuario);
+        }
+
+
+
         public ActionResult Index()
         {
             return View(db.Usuarios.ToList());
         }
 
-        // GET: Usuarios/Details/5
+  
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,15 +64,13 @@ namespace AppTicketCoral.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Create
+ 
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuarios/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserID,NombreUsuario,Pass,Operacion")] Usuario usuario)
@@ -52,13 +79,14 @@ namespace AppTicketCoral.Controllers
             {
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
+                carturer.RegistrarEvento("Se ha creado el registro de usuario: " + usuario.NombreUsuario);
                 return RedirectToAction("Index");
             }
 
             return View(usuario);
         }
 
-        // GET: Usuarios/Edit/5
+ 
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,9 +101,7 @@ namespace AppTicketCoral.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserID,NombreUsuario,Pass,Operacion")] Usuario usuario)
@@ -84,12 +110,13 @@ namespace AppTicketCoral.Controllers
             {
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
+                carturer.RegistrarEvento("Se ha editado el registro de usuario: " + usuario.NombreUsuario);
                 return RedirectToAction("Index");
             }
             return View(usuario);
         }
 
-        // GET: Usuarios/Delete/5
+ 
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +131,7 @@ namespace AppTicketCoral.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
+     
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -112,6 +139,7 @@ namespace AppTicketCoral.Controllers
             Usuario usuario = db.Usuarios.Find(id);
             db.Usuarios.Remove(usuario);
             db.SaveChanges();
+            carturer.RegistrarEvento("Se ha eliminado el registro de usuario: " + usuario.NombreUsuario);
             return RedirectToAction("Index");
         }
 
