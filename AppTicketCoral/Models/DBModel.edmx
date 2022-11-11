@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBCoralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Coralticket">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Operacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TipoConsulta" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Evidencia1" Type="image" />
+          <Property Name="Evidencia2" Type="image" />
+          <Property Name="Evidencia3" Type="image" />
+          <Property Name="Fecha" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Hora" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Observacion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="TIManager" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoEmpleado" Type="nvarchar" MaxLength="20" />
+          <Property Name="BadgeID" Type="nvarchar" MaxLength="20" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="70" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="30" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="30" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Subsidio" Type="bit" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Auto" Type="bit" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="20" />
+          <Property Name="Planta" Type="nvarchar" MaxLength="30" />
+          <Property Name="TipoPago" Type="nvarchar" MaxLength="30" />
+          <Property Name="CentroCostos" Type="nvarchar" MaxLength="30" />
+          <Property Name="PasswordEmp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="TipoSubsidio" Type="int" />
+          <Property Name="DesbloqueoSub" Type="int" />
+          <Property Name="SubAct" Type="bit" />
+          <Property Name="EstadoEmp" Type="bit" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="idHistory" />
+          </Key>
+          <Property Name="idHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Registro" Type="varchar" MaxLength="200" />
+          <Property Name="Fecha" Type="nchar" MaxLength="15" />
+          <Property Name="Hora" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="int" Nullable="false" />
+          <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Operacion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBCoralModelStoreContainer">
+          <EntitySet Name="Coralticket" EntityType="Self.Coralticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Empleados].[idTicket] AS [idTicket], 
+    [Empleados].[NoEmpleado] AS [NoEmpleado], 
+    [Empleados].[BadgeID] AS [BadgeID], 
+    [Empleados].[Nombre] AS [Nombre], 
+    [Empleados].[Empresa] AS [Empresa], 
+    [Empleados].[Departamento] AS [Departamento], 
+    [Empleados].[Imagen] AS [Imagen], 
+    [Empleados].[Subsidio] AS [Subsidio], 
+    [Empleados].[Cantidad] AS [Cantidad], 
+    [Empleados].[Auto] AS [Auto], 
+    [Empleados].[Fecha] AS [Fecha], 
+    [Empleados].[Planta] AS [Planta], 
+    [Empleados].[TipoPago] AS [TipoPago], 
+    [Empleados].[CentroCostos] AS [CentroCostos], 
+    [Empleados].[PasswordEmp] AS [PasswordEmp], 
+    [Empleados].[Estado] AS [Estado], 
+    [Empleados].[TipoSubsidio] AS [TipoSubsidio], 
+    [Empleados].[DesbloqueoSub] AS [DesbloqueoSub], 
+    [Empleados].[SubAct] AS [SubAct], 
+    [Empleados].[EstadoEmp] AS [EstadoEmp]
+    FROM [dbo].[Empleados] AS [Empleados]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBCoralModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Coralticket">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoConsulta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Evidencia1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Evidencia2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Evidencia3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIManager" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="idHistory" />
+          </Key>
+          <Property Name="idHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Registro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Hora" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BadgeID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Empresa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Subsidio" Type="Boolean" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Auto" Type="Boolean" />
+          <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Planta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TipoPago" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CentroCostos" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="TipoSubsidio" Type="Int32" />
+          <Property Name="DesbloqueoSub" Type="Int32" />
+          <Property Name="SubAct" Type="Boolean" />
+          <Property Name="EstadoEmp" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="TicketCoralEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Coraltickets" EntityType="Self.Coralticket" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBCoralModelStoreContainer" CdmEntityContainer="TicketCoralEntities">
+          <EntitySetMapping Name="Coraltickets">
+            <EntityTypeMapping TypeName="DBCoralModel.Coralticket">
+              <MappingFragment StoreEntitySet="Coralticket">
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+                <ScalarProperty Name="TipoConsulta" ColumnName="TipoConsulta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Evidencia1" ColumnName="Evidencia1" />
+                <ScalarProperty Name="Evidencia2" ColumnName="Evidencia2" />
+                <ScalarProperty Name="Evidencia3" ColumnName="Evidencia3" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="TIManager" ColumnName="TIManager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="DBCoralModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="idHistory" ColumnName="idHistory" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DBCoralModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="DBCoralModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+                <ScalarProperty Name="NoEmpleado" ColumnName="NoEmpleado" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Auto" ColumnName="Auto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Planta" ColumnName="Planta" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="CentroCostos" ColumnName="CentroCostos" />
+                <ScalarProperty Name="PasswordEmp" ColumnName="PasswordEmp" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="TipoSubsidio" ColumnName="TipoSubsidio" />
+                <ScalarProperty Name="DesbloqueoSub" ColumnName="DesbloqueoSub" />
+                <ScalarProperty Name="SubAct" ColumnName="SubAct" />
+                <ScalarProperty Name="EstadoEmp" ColumnName="EstadoEmp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
