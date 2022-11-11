@@ -1,0 +1,107 @@
+﻿@model IEnumerable<AppTicketCoral.Models.Coralticket>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoConsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evidencia1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evidencia2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evidencia3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIManager)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoConsulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evidencia1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evidencia2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evidencia3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIManager)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idTicket }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idTicket }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idTicket })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

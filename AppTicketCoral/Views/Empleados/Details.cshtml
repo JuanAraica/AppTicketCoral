@@ -1,0 +1,178 @@
+﻿@model AppTicketCoral.Models.Empleado
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Empleado</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NoEmpleado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NoEmpleado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BadgeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BadgeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Empresa)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Departamento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Imagen)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Subsidio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Subsidio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cantidad)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Auto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Auto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Planta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Planta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoPago)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TipoPago)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CentroCostos)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CentroCostos)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PasswordEmp)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PasswordEmp)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoSubsidio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TipoSubsidio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DesbloqueoSub)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DesbloqueoSub)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SubAct)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SubAct)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EstadoEmp)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EstadoEmp)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idTicket }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

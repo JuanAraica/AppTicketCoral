@@ -1,0 +1,50 @@
+﻿@model AppTicketCoral.Models.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Usuario</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NombreUsuario)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NombreUsuario)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pass)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pass)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Operacion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Operacion)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
