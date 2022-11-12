@@ -10,53 +10,50 @@ using AppTicketCoral.Models;
 
 namespace AppTicketCoral.Controllers
 {
-    public class CoralticketsController : Controller
+    public class VentasController : Controller
     {
         private TicketCoralEntities db = new TicketCoralEntities();
-        HistoriesController carturer = new HistoriesController();
 
- 
+
         public ActionResult Index()
         {
-            carturer.RegistrarEvento("Se ha abierto el modulo tickets");
-            return View(db.Coraltickets.ToList());
+            return View(db.Ventas.ToList());
         }
 
- 
+
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            Coralticket coralticket = db.Coraltickets.Find(id);
-            if (coralticket == null)
+            Venta venta = db.Ventas.Find(id);
+            if (venta == null)
             {
                 return HttpNotFound();
             }
-            carturer.RegistrarEvento("Se ha abierto el ticket n°: "+ coralticket.idTicket);
-            return View(coralticket);
+            return View(venta);
         }
+
+
         public ActionResult Create()
         {
             return View();
         }
 
- 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idTicket,Usuario,Operacion,TipoConsulta,Descripcion,Evidencia1,Evidencia2,Evidencia3,Fecha,Hora,Estado,Observacion,TIManager")] Coralticket coralticket)
+        public ActionResult Create([Bind(Include = "IdVentas,Fecha,Hora,NoTicket,NoEmpleado,Codigo,Costo,Estado,Cantidad,Operador,Impuesto,Subsidio,Site")] Venta venta)
         {
             if (ModelState.IsValid)
             {
-                db.Coraltickets.Add(coralticket);
+                db.Ventas.Add(venta);
                 db.SaveChanges();
-                carturer.RegistrarEvento("Se ha Creado el ticket n°: " + coralticket.idTicket);
                 return RedirectToAction("Index");
             }
 
-            return View(coralticket);
+            return View(venta);
         }
 
         public ActionResult Edit(int? id)
@@ -65,27 +62,26 @@ namespace AppTicketCoral.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Coralticket coralticket = db.Coraltickets.Find(id);
-            if (coralticket == null)
+            Venta venta = db.Ventas.Find(id);
+            if (venta == null)
             {
                 return HttpNotFound();
             }
-            return View(coralticket);
+            return View(venta);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idTicket,Usuario,Operacion,TipoConsulta,Descripcion,Evidencia1,Evidencia2,Evidencia3,Fecha,Hora,Estado,Observacion,TIManager")] Coralticket coralticket)
+        public ActionResult Edit([Bind(Include = "IdVentas,Fecha,Hora,NoTicket,NoEmpleado,Codigo,Costo,Estado,Cantidad,Operador,Impuesto,Subsidio,Site")] Venta venta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(coralticket).State = EntityState.Modified;
+                db.Entry(venta).State = EntityState.Modified;
                 db.SaveChanges();
-                carturer.RegistrarEvento("Se ha editado el ticket n°: " + coralticket.idTicket);
                 return RedirectToAction("Index");
             }
-            return View(coralticket);
+            return View(venta);
         }
 
 
@@ -95,12 +91,12 @@ namespace AppTicketCoral.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Coralticket coralticket = db.Coraltickets.Find(id);
-            if (coralticket == null)
+            Venta venta = db.Ventas.Find(id);
+            if (venta == null)
             {
                 return HttpNotFound();
             }
-            return View(coralticket);
+            return View(venta);
         }
 
 
@@ -108,10 +104,9 @@ namespace AppTicketCoral.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Coralticket coralticket = db.Coraltickets.Find(id);
-            db.Coraltickets.Remove(coralticket);
+            Venta venta = db.Ventas.Find(id);
+            db.Ventas.Remove(venta);
             db.SaveChanges();
-            carturer.RegistrarEvento("Se ha eliminado el ticket n°: " + coralticket.idTicket);
             return RedirectToAction("Index");
         }
 

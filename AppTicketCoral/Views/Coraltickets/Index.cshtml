@@ -1,107 +1,239 @@
 ﻿@model IEnumerable<AppTicketCoral.Models.Coralticket>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Tickets De Soporte";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Operacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoConsulta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evidencia1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evidencia2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evidencia3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hora)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TIManager)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Operacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoConsulta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Evidencia1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Evidencia2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Evidencia3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hora)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TIManager)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idTicket }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idTicket }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idTicket })
-            </td>
-        </tr>
+
+@foreach (var item in Model)
+{
+    if (item.Estado == "urgente" || item.Estado == "Urgente")
+    {
+        <style>
+
+
+
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 1200px;
+                margin-block: 2rem;
+                gap: 2rem;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+                object-fit: cover;
+            }
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                width: clamp(20rem, calc(20rem + 2vw), 22rem);
+                overflow: hidden;
+                box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+                border-radius: 1em;
+                background: #ECE9E6;
+                background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+            }
+
+
+
+            .card__body {
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+            }
+
+
+            .tag {
+                align-self: flex-start;
+                padding: .25em .75em;
+                border-radius: 1em;
+                font-size: .75rem;
+            }
+
+                .tag + .tag {
+                    margin-left: .5em;
+                }
+
+            .tag-blue {
+                background: #56CCF2;
+                background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+                color: #fafafa;
+            }
+
+            .tag-brown {
+                background: #D1913C;
+                background: linear-gradient(to bottom, #FFD194, #D1913C);
+                color: #fafafa;
+            }
+
+            .tag-red {
+                background: #cb2d3e;
+                background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+                color: #fafafa;
+            }
+
+            .card__body h4 {
+                font-size: 1.5rem;
+                text-transform: capitalize;
+            }
+
+            .card__footer {
+                display: flex;
+                padding: 1rem;
+                margin-top: auto;
+            }
+
+            .user {
+                display: flex;
+                gap: .5rem;
+            }
+
+            .user__image {
+                border-radius: 50%;
+            }
+
+            .user__info > small {
+                color: #666;
+            }
+        </style>
+        <div class="container">
+            <div class="card">
+                <div class="card__header">
+                    <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image" width="600">
+                </div>
+                <div class="card__body">
+                    <span class="tag tag-red">@Html.DisplayFor(modelItem => item.Estado)</span>
+
+                    <h4>@Html.DisplayFor(modelItem => item.Fecha) / @Html.DisplayFor(modelItem => item.Hora)</h4>
+                    <p>Averia @Html.DisplayFor(modelItem => item.TipoConsulta):  @Html.DisplayFor(modelItem => item.Descripcion)</p>
+                </div>
+                <div class="card__footer">
+                    <div class="user">
+                        <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+                        <div class="user__info">
+                            <h5>@Html.DisplayFor(modelItem => item.Usuario)  </h5>
+                            <small>@Html.DisplayFor(modelItem => item.Operacion)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     }
-    
-    </table>
-</body>
-</html>
+}
+
+
+
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Nuevo Ticket", "Create")</button>
+
+
+
+
+<style>
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+    }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+    /* Style the accordion panel. Note: hidden by default */
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+    }
+</style>
+
+
+@foreach (var item in Model)
+{
+    <button class="accordion">
+        Ticket
+        @if (item.Estado == "pendiente" || item.Estado == "Pendiente")
+        {
+            <spam style="color:orange">@Html.DisplayFor(modelItem => item.Estado)</spam>
+
+        }
+        @if (item.Estado == "urgente" || item.Estado == "Urgente")
+        {
+            <spam style="color:red"> @Html.DisplayFor(modelItem => item.Estado)</spam>
+        }
+        @if (item.Estado == "resuelto" || item.Estado == "Resuelto")
+        {
+            <spam style="color:green"> @Html.DisplayFor(modelItem => item.Estado)</spam>
+        }
+
+
+
+
+
+
+
+        Abierto por @Html.DisplayFor(modelItem => item.Usuario) de @Html.DisplayFor(modelItem => item.Operacion) en dia @Html.DisplayFor(modelItem => item.Fecha) al ser las @Html.DisplayFor(modelItem => item.Hora)
+    </button>
+    <div class="panel">
+        <p>
+            Averia @Html.DisplayFor(modelItem => item.TipoConsulta):  @Html.DisplayFor(modelItem => item.Descripcion)
+
+            @Html.DisplayFor(modelItem => item.Evidencia1)
+
+            @Html.DisplayFor(modelItem => item.Evidencia2)
+
+            @Html.DisplayFor(modelItem => item.Evidencia3)
+
+            <div>Atebdido por: @Html.DisplayFor(modelItem => item.TIManager)  </div>
+
+            <div>Observacion: @Html.DisplayFor(modelItem => item.Observacion)</div>
+
+            <div>
+                Acciones: @Html.ActionLink("Edit", "Edit", new { id = item.idTicket }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idTicket }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idTicket })
+            </div>
+        </p>
+    </div>
+}
+
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+
+</script>

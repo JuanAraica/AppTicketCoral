@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBCoralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBCoralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Coralticket">
           <Key>
             <PropertyRef Name="idTicket" />
@@ -59,6 +59,21 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <Property Name="Fecha" Type="nchar" MaxLength="15" />
           <Property Name="Hora" Type="nchar" MaxLength="15" />
         </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Costo" Type="real" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="30" />
+          <Property Name="CCompra" Type="real" />
+          <Property Name="Iva" Type="int" />
+          <Property Name="SubPro" Type="bit" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="30" />
+          <Property Name="codigo_cabys" Type="varchar" MaxLength="13" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="UserID" />
@@ -68,10 +83,30 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Operacion" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdVentas" />
+          </Key>
+          <Property Name="IdVentas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Hora" Type="nvarchar" MaxLength="20" />
+          <Property Name="NoTicket" Type="nvarchar" MaxLength="15" />
+          <Property Name="NoEmpleado" Type="nvarchar" MaxLength="20" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Costo" Type="float" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="Cantidad" Type="tinyint" />
+          <Property Name="Operador" Type="nvarchar" MaxLength="30" />
+          <Property Name="Impuesto" Type="float" />
+          <Property Name="Subsidio" Type="float" />
+          <Property Name="Site" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityContainer Name="DBCoralModelStoreContainer">
           <EntitySet Name="Coralticket" EntityType="Self.Coralticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Empleados].[idTicket] AS [idTicket], 
@@ -97,8 +132,7 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
     FROM [dbo].[Empleados] AS [Empleados]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBCoralModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -168,7 +202,42 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <EntitySet Name="Histories" EntityType="Self.History" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+          <EntitySet Name="Productos" EntityType="DBCoralModel.Producto" />
+          <EntitySet Name="Ventas" EntityType="DBCoralModel.Venta" />
         </EntityContainer>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Single" />
+          <Property Name="Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CCompra" Type="Single" />
+          <Property Name="Iva" Type="Int32" />
+          <Property Name="SubPro" Type="Boolean" />
+          <Property Name="Empresa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_cabys" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="IdVentas" />
+          </Key>
+          <Property Name="IdVentas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Hora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NoTicket" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Double" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Cantidad" Type="Byte" />
+          <Property Name="Operador" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Impuesto" Type="Double" />
+          <Property Name="Subsidio" Type="Double" />
+          <Property Name="Site" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -237,6 +306,41 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
                 <ScalarProperty Name="DesbloqueoSub" ColumnName="DesbloqueoSub" />
                 <ScalarProperty Name="SubAct" ColumnName="SubAct" />
                 <ScalarProperty Name="EstadoEmp" ColumnName="EstadoEmp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="DBCoralModel.Producto">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="codigo_cabys" ColumnName="codigo_cabys" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="SubPro" ColumnName="SubPro" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="CCompra" ColumnName="CCompra" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="DBCoralModel.Venta">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NoEmpleado" ColumnName="NoEmpleado" />
+                <ScalarProperty Name="NoTicket" ColumnName="NoTicket" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdVentas" ColumnName="IdVentas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

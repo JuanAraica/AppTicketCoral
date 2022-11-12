@@ -14,7 +14,7 @@ namespace AppTicketCoral.Controllers
     {
         private TicketCoralEntities db = new TicketCoralEntities();
 
-        // GET: Histories
+
         public ActionResult Index()
         {
             return View(db.Histories.ToList());
@@ -31,7 +31,7 @@ namespace AppTicketCoral.Controllers
         }
 
 
-        // GET: Histories/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -61,7 +61,7 @@ namespace AppTicketCoral.Controllers
             return View(history);
         }
 
-        // POST: Histories/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="DBCoralModel.History" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBCoralModel.Usuario" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBCoralModel.Empleado" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCoralModel.Producto" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DBCoralModel.Venta" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

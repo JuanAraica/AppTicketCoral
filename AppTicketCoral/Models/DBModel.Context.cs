@@ -29,5 +29,7 @@ namespace AppTicketCoral.Models
         public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
+        public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
     }
 }
