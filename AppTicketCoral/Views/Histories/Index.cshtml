@@ -6,45 +6,54 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Registro Global</title>
 </head>
 <body>
+ 
+    <form class="Formulario" style="margin-top:20px">
+
+        Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" class="Buscador" />
+
+    </form>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        <table class="table" id="datos">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Registro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hora)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Registro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hora)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalles", "Details", new { id = item.idHistory }) 
+                    </td>
+                </tr>
+                <tr class='noSearch hide'>
+
+                    <td colspan="4"></td>
+
+                </tr>
+            }
+
+        </table>
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Registro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hora)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Registro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hora)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idHistory }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idHistory }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idHistory })
-            </td>
-        </tr>
-    }
-    
-    </table>
 </body>
 </html>

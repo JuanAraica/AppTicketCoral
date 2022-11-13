@@ -15,7 +15,7 @@ namespace AppTicketCoral.Models
     public partial class Usuario
     {
         public int UserID { get; set; }
-        public int NombreUsuario { get; set; }
+        public string NombreUsuario { get; set; }
         public string Pass { get; set; }
         public string Operacion { get; set; }
     }

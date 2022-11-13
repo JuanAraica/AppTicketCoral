@@ -31,5 +31,11 @@ namespace AppTicketCoral.Models
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
         public virtual DbSet<Venta> Ventas { get; set; }
+        public virtual DbSet<EmpleadosBayer> EmpleadosBayers { get; set; }
+        public virtual DbSet<EmpleadosPop> EmpleadosPops { get; set; }
+        public virtual DbSet<ProductosBayer> ProductosBayers { get; set; }
+        public virtual DbSet<ProductosPop> ProductosPops { get; set; }
+        public virtual DbSet<VentasBayer> VentasBayers { get; set; }
+        public virtual DbSet<VentasPop> VentasPops { get; set; }
     }
 }

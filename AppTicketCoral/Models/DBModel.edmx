@@ -50,6 +50,56 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <Property Name="SubAct" Type="bit" />
           <Property Name="EstadoEmp" Type="bit" />
         </EntityType>
+        <EntityType Name="EmpleadosBayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoEmpleado" Type="nvarchar" MaxLength="20" />
+          <Property Name="BadgeID" Type="nvarchar" MaxLength="20" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="70" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="30" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="30" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Subsidio" Type="bit" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Auto" Type="bit" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="20" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="30" />
+          <Property Name="Unidad" Type="nvarchar" MaxLength="30" />
+          <Property Name="TipoSubsidio" Type="int" />
+          <Property Name="Gerencia" Type="nvarchar" MaxLength="30" />
+          <Property Name="DesbloqueoSub" Type="int" />
+          <Property Name="SubAct" Type="bit" />
+          <Property Name="IDSap" Type="nvarchar" MaxLength="20" />
+          <Property Name="TipoPago" Type="nvarchar" MaxLength="30" />
+          <Property Name="EstadoEmp" Type="bit" />
+        </EntityType>
+        <EntityType Name="EmpleadosPops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoEmpleado" Type="nvarchar" MaxLength="20" />
+          <Property Name="BadgeID" Type="nvarchar" MaxLength="20" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="70" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="30" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="30" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Subsidio" Type="bit" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Auto" Type="bit" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="20" />
+          <Property Name="Planta" Type="nvarchar" MaxLength="30" />
+          <Property Name="TipoPago" Type="nvarchar" MaxLength="30" />
+          <Property Name="CentroCostos" Type="nvarchar" MaxLength="30" />
+          <Property Name="PasswordEmp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="TipoSubsidio" Type="int" />
+          <Property Name="DesbloqueoSub" Type="int" />
+          <Property Name="SubAct" Type="bit" />
+          <Property Name="EstadoEmp" Type="bit" />
+        </EntityType>
         <EntityType Name="History">
           <Key>
             <PropertyRef Name="idHistory" />
@@ -74,13 +124,41 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <Property Name="Empresa" Type="nvarchar" MaxLength="30" />
           <Property Name="codigo_cabys" Type="varchar" MaxLength="13" />
         </EntityType>
+        <EntityType Name="ProductosBayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Costo" Type="real" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="30" />
+          <Property Name="CCompra" Type="real" />
+          <Property Name="Iva" Type="int" />
+          <Property Name="SubPro" Type="bit" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="30" />
+          <Property Name="codigo_cabys" Type="varchar" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductosPops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Costo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="100" />
+          <Property Name="CCompra" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Iva" Type="float" />
+          <Property Name="SubPro" Type="bit" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreUsuario" Type="int" Nullable="false" />
-          <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Operacion" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Ventas">
@@ -101,12 +179,54 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <Property Name="Subsidio" Type="float" />
           <Property Name="Site" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="VentasBayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Hora" Type="nvarchar" MaxLength="20" />
+          <Property Name="NoTicket" Type="nvarchar" MaxLength="15" />
+          <Property Name="NoEmpleado" Type="nvarchar" MaxLength="20" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Costo" Type="float" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="Cantidad" Type="tinyint" />
+          <Property Name="Operador" Type="nvarchar" MaxLength="30" />
+          <Property Name="Impuesto" Type="float" />
+          <Property Name="Subsidio" Type="float" />
+          <Property Name="Site" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VentasPops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Hora" Type="time" Precision="7" />
+          <Property Name="NoTicket" Type="nvarchar" MaxLength="15" />
+          <Property Name="NoEmpleado" Type="nvarchar" MaxLength="20" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Costo" Type="float" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="Cantidad" Type="tinyint" />
+          <Property Name="Operador" Type="nvarchar" MaxLength="30" />
+          <Property Name="Impuesto" Type="float" />
+          <Property Name="Subsidio" Type="float" />
+          <Property Name="Site" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityContainer Name="DBCoralModelStoreContainer">
           <EntitySet Name="Coralticket" EntityType="Self.Coralticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadosBayer" EntityType="Self.EmpleadosBayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadosPops" EntityType="Self.EmpleadosPops" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductosBayer" EntityType="Self.ProductosBayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductosPops" EntityType="Self.ProductosPops" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VentasBayer" EntityType="Self.VentasBayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VentasPops" EntityType="Self.VentasPops" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Empleados].[idTicket] AS [idTicket], 
@@ -168,8 +288,8 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Operacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleado">
@@ -204,6 +324,12 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <EntitySet Name="Empleados" EntityType="Self.Empleado" />
           <EntitySet Name="Productos" EntityType="DBCoralModel.Producto" />
           <EntitySet Name="Ventas" EntityType="DBCoralModel.Venta" />
+          <EntitySet Name="EmpleadosBayers" EntityType="DBCoralModel.EmpleadosBayer" />
+          <EntitySet Name="EmpleadosPops" EntityType="DBCoralModel.EmpleadosPop" />
+          <EntitySet Name="ProductosBayers" EntityType="DBCoralModel.ProductosBayer" />
+          <EntitySet Name="ProductosPops" EntityType="DBCoralModel.ProductosPop" />
+          <EntitySet Name="VentasBayers" EntityType="DBCoralModel.VentasBayer" />
+          <EntitySet Name="VentasPops" EntityType="DBCoralModel.VentasPop" />
         </EntityContainer>
         <EntityType Name="Producto">
           <Key>
@@ -227,6 +353,120 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
           <Property Name="IdVentas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NoTicket" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Double" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Cantidad" Type="Byte" />
+          <Property Name="Operador" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Impuesto" Type="Double" />
+          <Property Name="Subsidio" Type="Double" />
+          <Property Name="Site" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmpleadosBayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BadgeID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Empresa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Subsidio" Type="Boolean" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Auto" Type="Boolean" />
+          <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Unidad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TipoSubsidio" Type="Int32" />
+          <Property Name="Gerencia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DesbloqueoSub" Type="Int32" />
+          <Property Name="SubAct" Type="Boolean" />
+          <Property Name="IDSap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TipoPago" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoEmp" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="EmpleadosPop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BadgeID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Empresa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Subsidio" Type="Boolean" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Auto" Type="Boolean" />
+          <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Planta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TipoPago" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CentroCostos" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="TipoSubsidio" Type="Int32" />
+          <Property Name="DesbloqueoSub" Type="Int32" />
+          <Property Name="SubAct" Type="Boolean" />
+          <Property Name="EstadoEmp" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ProductosBayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Single" />
+          <Property Name="Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CCompra" Type="Single" />
+          <Property Name="Iva" Type="Int32" />
+          <Property Name="SubPro" Type="Boolean" />
+          <Property Name="Empresa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_cabys" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductosPop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Proveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CCompra" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Iva" Type="Double" />
+          <Property Name="SubPro" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="VentasBayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Hora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NoTicket" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Double" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Cantidad" Type="Byte" />
+          <Property Name="Operador" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Impuesto" Type="Double" />
+          <Property Name="Subsidio" Type="Double" />
+          <Property Name="Site" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VentasPop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Hora" Type="Time" Precision="7" />
           <Property Name="NoTicket" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="NoEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -341,6 +581,126 @@ advertencia 6002: La tabla o vista 'ticketcoral.dbo.Empleados' no tiene definida
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="IdVentas" ColumnName="IdVentas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadosBayers">
+            <EntityTypeMapping TypeName="DBCoralModel.EmpleadosBayer">
+              <MappingFragment StoreEntitySet="EmpleadosBayer">
+                <ScalarProperty Name="EstadoEmp" ColumnName="EstadoEmp" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="IDSap" ColumnName="IDSap" />
+                <ScalarProperty Name="SubAct" ColumnName="SubAct" />
+                <ScalarProperty Name="DesbloqueoSub" ColumnName="DesbloqueoSub" />
+                <ScalarProperty Name="Gerencia" ColumnName="Gerencia" />
+                <ScalarProperty Name="TipoSubsidio" ColumnName="TipoSubsidio" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Auto" ColumnName="Auto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="NoEmpleado" ColumnName="NoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadosPops">
+            <EntityTypeMapping TypeName="DBCoralModel.EmpleadosPop">
+              <MappingFragment StoreEntitySet="EmpleadosPops">
+                <ScalarProperty Name="EstadoEmp" ColumnName="EstadoEmp" />
+                <ScalarProperty Name="SubAct" ColumnName="SubAct" />
+                <ScalarProperty Name="DesbloqueoSub" ColumnName="DesbloqueoSub" />
+                <ScalarProperty Name="TipoSubsidio" ColumnName="TipoSubsidio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PasswordEmp" ColumnName="PasswordEmp" />
+                <ScalarProperty Name="CentroCostos" ColumnName="CentroCostos" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="Planta" ColumnName="Planta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Auto" ColumnName="Auto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="NoEmpleado" ColumnName="NoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductosBayers">
+            <EntityTypeMapping TypeName="DBCoralModel.ProductosBayer">
+              <MappingFragment StoreEntitySet="ProductosBayer">
+                <ScalarProperty Name="codigo_cabys" ColumnName="codigo_cabys" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="SubPro" ColumnName="SubPro" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="CCompra" ColumnName="CCompra" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductosPops">
+            <EntityTypeMapping TypeName="DBCoralModel.ProductosPop">
+              <MappingFragment StoreEntitySet="ProductosPops">
+                <ScalarProperty Name="SubPro" ColumnName="SubPro" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="CCompra" ColumnName="CCompra" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VentasBayers">
+            <EntityTypeMapping TypeName="DBCoralModel.VentasBayer">
+              <MappingFragment StoreEntitySet="VentasBayer">
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NoEmpleado" ColumnName="NoEmpleado" />
+                <ScalarProperty Name="NoTicket" ColumnName="NoTicket" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VentasPops">
+            <EntityTypeMapping TypeName="DBCoralModel.VentasPop">
+              <MappingFragment StoreEntitySet="VentasPops">
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NoEmpleado" ColumnName="NoEmpleado" />
+                <ScalarProperty Name="NoTicket" ColumnName="NoTicket" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

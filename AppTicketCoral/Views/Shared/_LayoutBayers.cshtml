@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Content/images/LogoCoral.jpeg" />
+
+    <title>Soporte Coral</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style=" background-color: #ff0000;color:#ffffff;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Coral Support", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li style="color:white">@Html.ActionLink("Productos", "Index", "Productos")</li>
+                    <li>@Html.ActionLink("Heraus", "HomeHeraeus", "Home")</li>
+                    <li>@Html.ActionLink("Pops", "HomePops", "Home")</li>
+                    <li>@Html.ActionLink("Bayer", "HomeBayer", "Home")</li>
+                </ul>
+                <style>
+                    li {
+                        color: white;
+                    }
+                </style>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <style>
+
+
+.wrapSubMenu {
+  display: inline-block;
+  -webkit-box-shadow: 0 0 70px #fff;
+  -moz-box-shadow: 0 0 70px #fff;
+  box-shadow: 0 0 70px #fff;
+  margin-top: 40px;
+}
+
+/* a little "umph" */
+        .decorSubMenu {
+            background: #ff0000;
+            background: -webkit-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
+            background: -moz-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
+            background: -o-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
+            background: linear-gradient(left, white 50%, #6EAF8D 50%);
+            background-size: 50px 25%;
+            ;
+            padding: 2px;
+            display: block;
+        }
+
+a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  position: relative;
+  text-align: left;
+}
+
+li {
+  float: left;
+}
+
+/* clear'n floats */
+ul:after {
+  clear: both;
+}
+
+ul:before,
+ul:after {
+    content: " ";
+    display: table;
+}
+
+nav {
+  position: relative;
+  background: #2B2B2B;
+  background-image: -webkit-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  background-image: -moz-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  background-image: -o-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  background-image: linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #0E0E0E;
+  -webkit-box-shadow: 2px 2px 3px #888;
+  -moz-box-shadow: 2px 2px 3px #888;
+  box-shadow: 2px 2px 3px #888;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* prime */
+ul.primary li a {
+  display: block;
+  padding: 20px 30px;
+  border-right: 1px solid #3D3D3D;
+}
+
+ul.primary li:last-child a {
+  border-right: none;
+}
+
+ul.primary li a:hover {
+
+  color: #000;
+}
+
+/* subs */
+ul.sub {
+  position: absolute;
+  z-index: 200;
+  box-shadow: 2px 2px 0 #BEBEBE;
+  width: 35%;
+  display:none;
+}
+
+ul.sub li {
+  float: none;
+  margin: 0;
+}
+
+ul.sub li a {
+  border-bottom: 1px dotted #ccc;
+  border-right: none;
+  color: #000;
+  padding: 15px 30px;
+}
+
+ul.sub li:last-child a {
+  border-bottom: none;
+}
+
+ul.sub li a:hover {
+  color: #000;
+  background: #eeeeee;
+}
+
+/* sub display*/
+ul.primary li:hover ul {
+  display: block;
+  background: #fff;
+}
+
+/* keeps the tab background white */
+ul.primary li:hover a {
+  background: #fff;
+  color: #666;
+  text-shadow: none;
+}
+
+ul.primary li:hover > a{
+  color: #000;
+}
+
+
+
+    </style>
+
+    <div class="container body-content">
+
+        <div class="wrapSubMenu">
+            <span class="decorSubMenu"></span>
+            <nav>
+                <ul class="primary">
+                    <li>
+                        <a href="">Bayer</a>
+                        <ul class="sub">
+                            <li>@Html.ActionLink("Ventas", "Index", "VentasBayers")</li>
+                            <li>@Html.ActionLink("Productos", "Index", "ProductosBayers")</li>
+                            <li>@Html.ActionLink("Empleados", "Index", "EmpleadosBayers")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Heraeus</a>
+                        <ul class="sub">
+                            <li>@Html.ActionLink("Ventas", "Index", "Ventas")</li>
+                            <li>@Html.ActionLink("Productos", "Index", "Productos")</li>
+                            <li>@Html.ActionLink("Empleados", "Index", "Empleados")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Pops</a>
+                        <ul class="sub">
+                            <li>@Html.ActionLink("Ventas", "Index", "VentasPops")</li>
+                            <li>@Html.ActionLink("Productos", "Index", "ProductosPops")</li>
+                            <li>@Html.ActionLink("Empleados", "Index", "EmpleadosPops")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Coral CR</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -13,135 +13,148 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NoEmpleado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BadgeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Empresa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Departamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subsidio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Auto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Planta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoPago)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CentroCostos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PasswordEmp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoSubsidio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DesbloqueoSub)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SubAct)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoEmp)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoEmpleado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BadgeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empresa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Departamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subsidio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Auto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Planta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CentroCostos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PasswordEmp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoSubsidio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DesbloqueoSub)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubAct)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoEmp)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idTicket }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idTicket }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idTicket })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <form>
+
+        Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" class="Buscador" />
+
+    </form>
+    <p>
+        <table class="table" id="datos">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoEmpleado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BadgeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Empresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Departamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subsidio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Planta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoPago)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CentroCostos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PasswordEmp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoSubsidio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DesbloqueoSub)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubAct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoEmp)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoEmpleado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BadgeID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Departamento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Imagen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subsidio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Auto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Planta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoPago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CentroCostos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PasswordEmp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoSubsidio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DesbloqueoSub)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubAct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstadoEmp)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.idTicket }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.idTicket }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.idTicket })
+                    </td>
+                </tr>
+                <tr class='noSearch hide'>
+
+                    <td colspan="20"></td>
+
+                </tr>
+            }
+
+        </table>
+    </p>
 </body>
 </html>

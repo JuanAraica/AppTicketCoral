@@ -25,7 +25,7 @@ textarea {
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-    background-color: #777;
+    background-color: #ff0000;
     border-color: #fff
 }
 
@@ -95,3 +95,48 @@ textarea {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+@media only screen and (max-width: 600px) {
+    .decorSubMenu {
+        padding: 3px;
+    }
+
+    .SubMenu {
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    li {
+        float: none;
+    }
+
+    ul.primary li:hover a {
+        background: none;
+        color: #8B8B8B;
+        text-shadow: 1px 1px #000;
+    }
+
+    ul.primary li:hover ul {
+        display: block;
+        background: #272727;
+        color: #fff;
+    }
+
+    ul.sub {
+        display: block;
+        position: static;
+        box-shadow: none;
+        width: 100%;
+    }
+
+        ul.sub li a {
+            background: #272727;
+            border: none;
+            color: #8B8B8B;
+        }
+
+            ul.sub li a:hover {
+                color: #ccc;
+                background: none;
+            }
+}

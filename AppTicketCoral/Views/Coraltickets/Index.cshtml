@@ -105,9 +105,6 @@
         </style>
         <div class="container">
             <div class="card">
-                <div class="card__header">
-                    <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image" width="600">
-                </div>
                 <div class="card__body">
                     <span class="tag tag-red">@Html.DisplayFor(modelItem => item.Estado)</span>
 
@@ -132,9 +129,9 @@
 
 
 
-<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Nuevo Ticket", "Create")</button>
-
-
+<div>
+    <button type="button" class="btn btn-primary">@Html.ActionLink("Nuevo Ticket", "Create")</button>
+</div>
 
 
 <style>

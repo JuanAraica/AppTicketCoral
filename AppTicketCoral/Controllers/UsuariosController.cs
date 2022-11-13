@@ -17,6 +17,24 @@ namespace AppTicketCoral.Controllers
         HistoriesController carturer = new HistoriesController();
 
 
+        public string Encriptar(string mensaje)
+        {
+            string result = string.Empty;
+            byte[] encrypted = System.Text.Encoding.Unicode.GetBytes(mensaje);
+            result = Convert.ToBase64String(encrypted);
+            return result;
+        }
+
+
+        public string Desencriptar(string mensajeENC)
+        {
+            string result = string.Empty;
+            byte[] decrypted = Convert.FromBase64String(mensajeENC);
+            result = System.Text.Encoding.Unicode.GetString(decrypted);
+            return result;
+        }
+
+
         public ActionResult Login()
         {
             return View();
@@ -25,18 +43,22 @@ namespace AppTicketCoral.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "UserID,Pass")] Usuario usuario)
+        public ActionResult Login([Bind(Include = "NombreUsuario,Pass,")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                Usuario user = db.Usuarios.Find(usuario.UserID);
-                if (user.Pass == usuario.Pass)
+                foreach (var use in db.Usuarios.ToList())
                 {
-                    carturer.RegistrarEvento(usuario.NombreUsuario+" ha iniciado sesion"  );
-                    return RedirectToAction("Index", "Coraltickets");
+                    if (use.NombreUsuario==usuario.NombreUsuario)
+                    {
+                        if (Desencriptar(use.Pass) == usuario.Pass)
+                        {
+                            carturer.RegistrarEvento(usuario.NombreUsuario + " ha iniciado sesion");
+                            return RedirectToAction("Index", "Coraltickets");
+                        }
+                    }
                 }
-
-
+                return RedirectToAction("Login", "Usuarios");
             }
 
             return View(usuario);
@@ -46,7 +68,14 @@ namespace AppTicketCoral.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+                List<Usuario> userList = new List<Usuario>();
+            foreach (var user in db.Usuarios.ToList())
+            {
+                user.Pass= Desencriptar(user.Pass);
+                userList.Add(user);
+
+            }
+            return View(userList);
         }
 
   
@@ -57,6 +86,7 @@ namespace AppTicketCoral.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Usuario usuario = db.Usuarios.Find(id);
+            usuario.Pass = Desencriptar(usuario.Pass);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -77,6 +107,7 @@ namespace AppTicketCoral.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuario.Pass=Encriptar(usuario.Pass);
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
                 carturer.RegistrarEvento("Se ha creado el registro de usuario: " + usuario.NombreUsuario);
@@ -94,6 +125,7 @@ namespace AppTicketCoral.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Usuario usuario = db.Usuarios.Find(id);
+            usuario.Pass = Desencriptar(usuario.Pass);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -108,6 +140,7 @@ namespace AppTicketCoral.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuario.Pass = Encriptar(usuario.Pass);
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 carturer.RegistrarEvento("Se ha editado el registro de usuario: " + usuario.NombreUsuario);

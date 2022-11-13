@@ -1,0 +1,126 @@
+﻿@model AppTicketCoral.Models.VentasBayer
+
+ 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>VentasBayer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Hora)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Hora)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NoTicket)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NoTicket)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NoEmpleado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NoEmpleado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Codigo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Costo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Costo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cantidad)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Operador)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Operador)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Impuesto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Impuesto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Subsidio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Subsidio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Site)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Site)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

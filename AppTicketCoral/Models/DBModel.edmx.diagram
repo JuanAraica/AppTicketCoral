@@ -11,6 +11,12 @@
         <EntityTypeShape EntityType="DBCoralModel.Empleado" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBCoralModel.Producto" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="DBCoralModel.Venta" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DBCoralModel.EmpleadosBayer" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DBCoralModel.EmpleadosPop" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DBCoralModel.ProductosBayer" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DBCoralModel.ProductosPop" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DBCoralModel.VentasBayer" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DBCoralModel.VentasPop" Width="1.5" PointX="9.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

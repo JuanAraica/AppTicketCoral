@@ -130,12 +130,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CoralticketsController.cs" />
+    <Compile Include="Controllers\EmpleadosBayersController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
+    <Compile Include="Controllers\EmpleadosPopsController.cs" />
     <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductosBayersController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\ProductosPopsController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VentasBayersController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
+    <Compile Include="Controllers\VentasPopsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,10 +166,22 @@
     <Compile Include="Models\Empleado.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmpleadosBayer.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmpleadosPop.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\History.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producto.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductosBayer.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductosPop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
@@ -172,14 +190,27 @@
     <Compile Include="Models\Venta.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VentasBayer.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VentasPop.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bayer-Logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\BayerLogo.png" />
+    <Content Include="Content\images\DosPinos.png" />
+    <Content Include="Content\images\pops.png" />
+    <Content Include="Content\images\Pozuelo.png" />
+    <Content Include="Content\images\Heraeus.png" />
     <Content Include="Content\images\LogoCoral.jpeg" />
+    <Content Include="Content\CoralCss.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -204,6 +235,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\CoralScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -225,8 +257,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\homeUsuarios.cshtml" />
+    <Content Include="Views\Home\HomeSup.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Coraltickets\Create.cshtml" />
     <Content Include="Views\Coraltickets\Delete.cshtml" />
@@ -259,6 +291,42 @@
     <Content Include="Views\Ventas\Edit.cshtml" />
     <Content Include="Views\Ventas\Index.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\ProductosBayers\Create.cshtml" />
+    <Content Include="Views\ProductosBayers\Delete.cshtml" />
+    <Content Include="Views\ProductosBayers\Details.cshtml" />
+    <Content Include="Views\ProductosBayers\Edit.cshtml" />
+    <Content Include="Views\ProductosBayers\Index.cshtml" />
+    <Content Include="Views\EmpleadosBayers\Create.cshtml" />
+    <Content Include="Views\EmpleadosBayers\Delete.cshtml" />
+    <Content Include="Views\EmpleadosBayers\Details.cshtml" />
+    <Content Include="Views\EmpleadosBayers\Edit.cshtml" />
+    <Content Include="Views\EmpleadosBayers\Index.cshtml" />
+    <Content Include="Views\VentasBayers\Create.cshtml" />
+    <Content Include="Views\VentasBayers\Delete.cshtml" />
+    <Content Include="Views\VentasBayers\Details.cshtml" />
+    <Content Include="Views\VentasBayers\Edit.cshtml" />
+    <Content Include="Views\VentasBayers\Index.cshtml" />
+    <Content Include="Views\EmpleadosPops\Create.cshtml" />
+    <Content Include="Views\EmpleadosPops\Delete.cshtml" />
+    <Content Include="Views\EmpleadosPops\Details.cshtml" />
+    <Content Include="Views\EmpleadosPops\Edit.cshtml" />
+    <Content Include="Views\EmpleadosPops\Index.cshtml" />
+    <Content Include="Views\ProductosPops\Create.cshtml" />
+    <Content Include="Views\ProductosPops\Delete.cshtml" />
+    <Content Include="Views\ProductosPops\Details.cshtml" />
+    <Content Include="Views\ProductosPops\Edit.cshtml" />
+    <Content Include="Views\ProductosPops\Index.cshtml" />
+    <Content Include="Views\VentasPops\Create.cshtml" />
+    <Content Include="Views\VentasPops\Delete.cshtml" />
+    <Content Include="Views\VentasPops\Details.cshtml" />
+    <Content Include="Views\VentasPops\Edit.cshtml" />
+    <Content Include="Views\VentasPops\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutBayers.cshtml" />
+    <Content Include="Views\Home\HomeBayer.cshtml" />
+    <Content Include="Views\Home\HomeHeraeus.cshtml" />
+    <Content Include="Views\Home\HomePops.cshtml" />
+    <Content Include="Views\Shared\_LayoutPops.cshtml" />
+    <Content Include="Views\Shared\_LayoutHeraus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

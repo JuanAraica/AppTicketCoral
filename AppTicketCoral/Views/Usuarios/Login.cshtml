@@ -2,8 +2,8 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = null;
 }
-
 
 <style>
 
@@ -116,7 +116,7 @@
     }
 
     .padding-top--48 {
-        padding-top: 48px;
+        padding-top: 0px;
     }
 
     .padding-bottom--24 {
@@ -241,9 +241,20 @@
     .tans4s {
         animation: animationLeftRight 4s ease-in-out infinite;
     }
-    
 </style>
 
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Content/images/LogoCoral.jpeg" />
+
+    <title>Soporte Coral</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
 
 
 
@@ -302,9 +313,9 @@
 
                                 <form id="stripe-login">
                                     <div class="field padding-bottom--24">
-                                        <label for="email">Email</label>
-                                        @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                                        <label for="email">Usuario</label>
+                                        @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="field padding-bottom--24">
                                         <div class="grid--50-50">
@@ -349,4 +360,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 }
+
+<footer>
+    <p>&copy; @DateTime.Now.Year - Coral CR</p>
+</footer>
+
+
