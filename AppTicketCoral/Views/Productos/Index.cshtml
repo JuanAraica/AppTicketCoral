@@ -51,7 +51,7 @@
 
     <form>
 
-        Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" class="Buscador"/>
+        Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" class="Buscador" />
 
     </form>
 
@@ -60,7 +60,7 @@
 
     <p>
         <table class="table" id="datos">
-            <tr >
+            <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Codigo)
                 </th>
@@ -126,6 +126,11 @@
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     </td>
+                </tr>
+                <tr class='noSearch hide'>
+
+                    <td colspan="10"></td>
+
                 </tr>
                 <tr class='noSearch hide'>
 
