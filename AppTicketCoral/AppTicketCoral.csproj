@@ -327,6 +327,9 @@
     <Content Include="Views\Home\HomePops.cshtml" />
     <Content Include="Views\Shared\_LayoutPops.cshtml" />
     <Content Include="Views\Shared\_LayoutHeraus.cshtml" />
+    <Content Include="Views\Ventas\DetailsVentasUser.cshtml" />
+    <Content Include="Views\Ventas\DetailsVentasUserform.cshtml" />
+    <Content Include="Views\Ventas\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

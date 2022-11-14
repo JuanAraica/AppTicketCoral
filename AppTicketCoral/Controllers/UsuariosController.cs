@@ -43,7 +43,7 @@ namespace AppTicketCoral.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "NombreUsuario,Pass,")] Usuario usuario)
+        public ActionResult Login([Bind(Include = "NombreUsuario,Pass,Operacion")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -51,10 +51,26 @@ namespace AppTicketCoral.Controllers
                 {
                     if (use.NombreUsuario==usuario.NombreUsuario)
                     {
-                        if (Desencriptar(use.Pass) == usuario.Pass)
+                        if (usuario.Operacion== use.Operacion)
                         {
-                            carturer.RegistrarEvento(usuario.NombreUsuario + " ha iniciado sesion");
-                            return RedirectToAction("Index", "Coraltickets");
+                            if (Desencriptar(use.Pass) == usuario.Pass)
+                            {
+                                carturer.RegistrarEvento(usuario.NombreUsuario + " ha iniciado sesion");
+
+                                if (usuario.Operacion== "Soporte")
+                                {
+                                    return RedirectToAction("Index", "Coraltickets");
+                                }
+                                if (usuario.Operacion == "Empleado")
+                                {
+                                    return RedirectToAction("Index", "Coraltickets");
+                                }
+                                if (usuario.Operacion == "Cajero")
+                                {
+                                    return RedirectToAction("Index", "Coraltickets");
+                                }
+                                
+                            }
                         }
                     }
                 }
@@ -107,6 +123,7 @@ namespace AppTicketCoral.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 usuario.Pass=Encriptar(usuario.Pass);
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();

@@ -294,57 +294,47 @@
                 </div>
             </div>
             <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
-                <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-                    <h1><a href="" rel="dofollow">Soporte Coral</a></h1>
-                </div>
                 <div class="formbg-outer">
                     <div class="formbg">
                         <div class="formbg-inner padding-horizontal--48">
-                            <span class="padding-bottom--15">Sign in to your account</span>
 
                             @using (Html.BeginForm())
                             {
                                 @Html.AntiForgeryToken()
-
-
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                             <form id="stripe-login">
+                            <div class="field padding-bottom--24">
+                                <label for="email">Usuario</label>
+                                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <div class="grid--50-50">
+                                    <label for="password">Password</label>
+                                </div>
+                                @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <div class="grid--50-50">
+                                    <label for="password">Departamento/Operación</label>
+                                </div>
+                                <select class="form-control" id="Operacion" name="Operacion">
+                                    <option value="Soporte">Soporte</option>
+                                    <option value="Empleado">Empleado</option>
+                                    <option value="Cajero">Cajero</option>
+                                </select>
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="Iniciar Sesion">
+                            </div>
 
-
-
-                                <form id="stripe-login">
-                                    <div class="field padding-bottom--24">
-                                        <label for="email">Usuario</label>
-                                        @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="field padding-bottom--24">
-                                        <div class="grid--50-50">
-                                            <label for="password">Password</label>
-                                            <div class="reset-pass">
-                                                <a href="#">Forgot your password?</a>
-                                            </div>
-                                        </div>
-                                        @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                                        <label for="checkbox">
-                                            <input type="checkbox" name="checkbox"> Stay signed in for a week
-                                        </label>
-                                    </div>
-                                    <div class="field padding-bottom--24">
-                                        <input type="submit" name="submit" value="Login">
-                                    </div>
-                                    <div class="field">
-                                        <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
-                                    </div>
-                                </form>
+                        </form>
                             }
 
                         </div>
                     </div>
                     <div class="footer-link padding-top--24">
-                        <span>Don't have an account? <a href="">Sign up</a></span>
                         <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
                             <span><a href="#">© Coral</a></span>
                             <span><a href="#">Contact</a></span>

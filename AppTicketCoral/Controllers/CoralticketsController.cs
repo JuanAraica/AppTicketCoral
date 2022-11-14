@@ -43,16 +43,22 @@ namespace AppTicketCoral.Controllers
             return View();
         }
 
- 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idTicket,Usuario,Operacion,TipoConsulta,Descripcion,Evidencia1,Evidencia2,Evidencia3,Fecha,Hora,Estado,Observacion,TIManager")] Coralticket coralticket)
+        public ActionResult Create([Bind(Include = "idTicket,Usuario,Operacion,TipoConsulta,Descripcion,Evidencia1,Evidencia2,Evidencia3")] Coralticket coralticket)
         {
             if (ModelState.IsValid)
             {
+                coralticket.Estado = "Pendiente";
+                coralticket.Fecha = DateTime.UtcNow.ToString("MM-dd-yyyy");
+                coralticket.Hora = DateTime.Now.ToString("hh:mm:ss");
+                coralticket.Observacion = "Pendiente revision";
+                coralticket.TIManager = "Pendiente";
+
                 db.Coraltickets.Add(coralticket);
                 db.SaveChanges();
-                carturer.RegistrarEvento("Se ha Creado el ticket n°: " + coralticket.idTicket);
+                carturer.RegistrarEvento("se ha creado un ticket en " + coralticket.Operacion + " por " + coralticket.Usuario);
                 return RedirectToAction("Index");
             }
 

@@ -13,11 +13,16 @@ namespace AppTicketCoral.Controllers
     public class VentasController : Controller
     {
         private TicketCoralEntities db = new TicketCoralEntities();
+        List<Venta> misventasUser= new List<Venta>();
 
 
         public ActionResult Index()
         {
             return View(db.Ventas.ToList());
+        }
+        public ActionResult Index2()
+        {
+            return View(misventasUser.ToList());
         }
 
 
@@ -35,6 +40,35 @@ namespace AppTicketCoral.Controllers
             return View(venta);
         }
 
+        public ActionResult DetailsVentasUserform()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetailsVentasUserform([Bind(Include = "NoEmpleado")] Venta venta)
+        {
+            if (ModelState.IsValid)
+            {
+                List<Venta> misventas2 = new List<Venta>();
+                foreach (var ventas in db.Ventas.ToList())
+                {
+                    if (ventas.NoEmpleado == venta.NoEmpleado)
+                    {
+                        misventas2.Add(ventas);
+                    }
+                }
+                misventasUser = misventas2;
+            DetailsVentasUser();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DetailsVentasUser()
+        {
+            return View(misventasUser.ToList());
+        }
 
         public ActionResult Create()
         {
@@ -85,6 +119,9 @@ namespace AppTicketCoral.Controllers
         }
 
 
+ 
+        
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -118,5 +155,6 @@ namespace AppTicketCoral.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
